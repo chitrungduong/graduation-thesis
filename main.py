@@ -1,7 +1,7 @@
 import numpy as np
 
 from config import RANDOM_SEED, RISK_FREE_RATE, PORTFOLIO_SIZE, MAX_WEIGHT
-from src.data_loader import load_monthly_returns, load_daily_ohlcv, split_train_test
+from src.data_loader import load_monthly_returns, split_train_test
 from src.features import create_feature_matrix
 from src.ann_model import screen_stocks
 from src.portfolio import calculate_tangency_portfolio, create_equal_weight_portfolio, calculate_portfolio_returns
@@ -26,12 +26,11 @@ def run_backtest(test_year):
     print()
 
     returns = load_monthly_returns()
-    daily_ohlcv = load_daily_ohlcv()
     train_returns, test_returns, n_train, n_test = split_train_test(returns, test_year)
     train_stocks = [col for col in train_returns.columns if col != 'VN30']
 
     print("STEP 1: Stock Screening with ANN")
-    features_dict = create_feature_matrix(train_returns, daily_ohlcv, train_stocks)
+    features_dict = create_feature_matrix(train_returns, train_stocks)
     selected_stocks, screening_results, trained_models = screen_stocks(
         train_returns[train_stocks], features_dict, PORTFOLIO_SIZE
     )

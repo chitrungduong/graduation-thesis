@@ -19,12 +19,11 @@ from config import (
 )
 
 
-def calculate_features(monthly_returns, daily_ohlcv, stock):
+def calculate_features(monthly_returns, stock):
     """Calculate technical features for one stock.
 
     Args:
         monthly_returns: Monthly returns DataFrame (T x N)
-        daily_ohlcv: Daily OHLCV data
         stock: Stock ticker symbol
 
     Returns:
@@ -69,12 +68,11 @@ def calculate_features(monthly_returns, daily_ohlcv, stock):
     return features
 
 
-def create_feature_matrix(monthly_returns, daily_ohlcv, train_stocks):
+def create_feature_matrix(monthly_returns, train_stocks):
     """Create feature matrix for all stocks.
 
     Args:
         monthly_returns: Monthly returns DataFrame (T x N)
-        daily_ohlcv: Daily OHLCV data
         train_stocks: List of stock tickers
 
     Returns:
@@ -83,7 +81,7 @@ def create_feature_matrix(monthly_returns, daily_ohlcv, train_stocks):
     features_dict = {}
 
     for stock in train_stocks:
-        features = calculate_features(monthly_returns, daily_ohlcv, stock)
+        features = calculate_features(monthly_returns, stock)
         features_dict[stock] = features
 
     return features_dict
