@@ -1,6 +1,4 @@
 import numpy as np
-import sys
-sys.path.append('c:/Users/ASUS/Desktop/Thesis')
 
 from config import RANDOM_SEED, RISK_FREE_RATE, PORTFOLIO_SIZE, MAX_WEIGHT
 from src.data_loader import load_monthly_returns, load_daily_ohlcv, split_train_test
