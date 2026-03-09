@@ -1,7 +1,7 @@
 """
 features.py - Feature Engineering
 
-Calculate technical indicators from historical price and volume data.
+Calculate technical indicators from monthly stock returns.
 All features are lagged by 1 month to prevent look-ahead bias.
 """
 

@@ -19,9 +19,6 @@ env/
 *.swp
 *.swo
 
-# Raw data (too large for GitHub)
-data/vn30_daily_ohlcv_2020_2025_RAW.csv
-
 # OS
 Thumbs.db
 .DS_Store

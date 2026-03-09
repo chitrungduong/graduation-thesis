@@ -1,8 +1,8 @@
 """
 data_loader.py - Data Loading and Train-Test Split
 
-Functions for loading monthly returns, daily OHLCV data, and performing
-temporal train-test splits for walk-forward backtesting.
+Functions for loading monthly returns and performing temporal
+train-test splits for walk-forward backtesting.
 """
 
 import os
@@ -27,22 +27,6 @@ def load_monthly_returns(filepath=None):
         filepath = os.path.join(PROJECT_ROOT, 'data', 'vn30_monthly_returns_2020_2025.csv')
     df = pd.read_csv(filepath, index_col=0, parse_dates=True)
     df.index.name = 'date'
-    return df
-
-
-def load_daily_ohlcv(filepath=None):
-    """Load daily OHLCV data.
-
-    Args:
-        filepath: Path to daily OHLCV CSV file
-
-    Returns:
-        df: DataFrame with daily OHLCV data
-    """
-    if filepath is None:
-        filepath = os.path.join(PROJECT_ROOT, 'data', 'vn30_daily_ohlcv_2020_2025_RAW.csv')
-    df = pd.read_csv(filepath)
-    df['time'] = pd.to_datetime(df['time'])
     return df
 
 
